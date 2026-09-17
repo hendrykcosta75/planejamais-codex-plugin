@@ -6,7 +6,7 @@ não é aberto e vive em outro repositório.
 
 ## O que o plugin instala
 
-- Servidor MCP remoto `planejamais` (`https://planejamais.com.br/api/mcp`) em
+- Servidor MCP remoto `planejamais` (`https://planejamais.planejareconsultoria.com.br/api/mcp`) em
   `mcp.json`, com OAuth 2.1 (Dynamic Client Registration + PKCE) conduzido pelo
   cliente.
 - Skill `planejamais` com os fluxos de uso, o cuidado com `companyId` e as
@@ -42,8 +42,8 @@ guia do produto.
 
 ## Manutenção
 
-- A URL de produção pressupõe `https://planejamais.com.br`. Se o app mudar de
-  domínio, atualize `plugins/planejamais/mcp.json`.
+- A URL de produção é `https://planejamais.planejareconsultoria.com.br/api/mcp`.
+  Se o app mudar de domínio, atualize `plugins/planejamais/mcp.json` e suba a versão.
 - Ao publicar uma nova versão, incremente `version` em
   `plugins/planejamais/plugin.json`.
 - `termsOfServiceURL` será adicionado ao manifesto quando a página pública de

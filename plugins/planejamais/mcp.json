@@ -3,7 +3,7 @@
   "mcpServers": {
     "planejamais": {
       "type": "streamable-http",
-      "url": "https://planejamais.com.br/api/mcp"
+      "url": "https://planejamais.planejareconsultoria.com.br/api/mcp"
     }
   }
 }

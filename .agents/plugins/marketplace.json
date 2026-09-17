@@ -1,0 +1,20 @@
+{
+  "name": "planejamais",
+  "interface": {
+    "displayName": "Planeja+"
+  },
+  "plugins": [
+    {
+      "name": "planejamais",
+      "source": {
+        "source": "local",
+        "path": "./plugins/planejamais"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

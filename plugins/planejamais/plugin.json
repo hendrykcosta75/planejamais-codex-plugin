@@ -1,0 +1,34 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "planejamais",
+  "version": "1.0.0",
+  "description": "Conecta ChatGPT e Codex ao Planeja+ para consultar e atualizar planejamento estratégico, quadros de tarefas, reuniões, relatórios e tickets da sua empresa.",
+  "author": {
+    "name": "Planeja+",
+    "url": "https://planejamais.com.br"
+  },
+  "homepage": "https://planejamais.com.br",
+  "repository": "https://github.com/hendrykcosta75/planejamais-codex-plugin",
+  "keywords": ["planejamento", "tarefas", "projetos", "mcp", "gestao"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Planeja+",
+        "shortDescription": "Planejamento estratégico no seu agente",
+        "longDescription": "Consulte e atualize o Planeja+ direto no ChatGPT e no Codex: planejamentos, perspectivas, objetivos, iniciativas e etapas; quadros de tarefas, checklists e etiquetas; reuniões, eventos, relatórios e tickets. Cada chamada respeita o seu papel na empresa escolhida e ações destrutivas pedem confirmação.",
+        "developerName": "Planeja+",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://planejamais.com.br",
+        "privacyPolicyURL": "https://planejamais.com.br/privacidade",
+        "defaultPrompt": [
+          "Resuma o andamento das iniciativas do planejamento estratégico deste trimestre.",
+          "Crie as tarefas de acompanhamento da reunião de hoje no quadro do time.",
+          "Gere o relatório geral do planejamento e destaque os riscos."
+        ],
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png"
+      }
+    }
+  }
+}

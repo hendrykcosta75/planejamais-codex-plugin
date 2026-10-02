@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "planejamais",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Conecta ChatGPT e Codex ao Planeja+ para consultar e atualizar planejamento estratégico, quadros de tarefas, reuniões, relatórios e tickets da sua empresa.",
   "author": {
     "name": "HENDRYK DE OLIVEIRA COSTA",
@@ -57,16 +57,16 @@
               "expected_behavior": "Resolve the named company and plan through discovery results. Call get_planejamento with the returned plan id and explicit companyId. Summarize perspectives, objectives and initiatives from the result; do not invent owners, dates or progress. No write tools are needed."
             },
             {
-              "description": "Kanban task creation. Setup: the reviewer is an owner only in Catalogo OpenAI - Demonstracao and a member of the board Acompanhamento Demo. The task Revisar meta do trimestre is absent before the case. Run this case once or inspect existing tasks before rerunning.",
+              "description": "Kanban task creation and verification. Setup: the reviewer is an owner only in Catalogo OpenAI - Demonstracao and a member of Acompanhamento Demo. The fixture already contains Revisar meta do trimestre, created once during the recorded preparation. Inspect existing tasks first; if an exact matching task exists, verify and report it without creating a duplicate. Creation is required only when absent.",
               "prompt": "Na empresa Catalogo OpenAI - Demonstracao, crie a tarefa Revisar meta do trimestre com prioridade alta na coluna A fazer do quadro Acompanhamento Demo.",
               "tools_triggered": "list_my_companies, list_boards, get_board, create_task, list_tasks",
-              "expected_behavior": "Resolve boardId and columnId from list_boards/get_board and use the discovered companyId. Call create_task with title Revisar meta do trimestre and priority alta, without assigning real users or adding unknown labels. Verify the returned task appears in list_tasks for that board and column. Report success only if creation succeeds."
+              "expected_behavior": "Resolve companyId, boardId and columnId from discovery. Inspect list_tasks for the selected board and A fazer column before writing. If Revisar meta do trimestre already exists, verify its title, column and priority alta and report that it is already saved; do not duplicate it. Otherwise call create_task with that title and priority alta, without assigning real users or adding unknown labels, then verify it in list_tasks. Report success only from actual results."
             },
             {
-              "description": "Calendar event creation. Setup: owner role only in Catalogo OpenAI - Demonstracao. The creator is automatically included as the only participant. No other attendees, generated meeting, or external notifications are requested. The test event is absent before execution; inspect existing events before rerunning.",
+              "description": "Calendar event creation and verification. Setup: owner role only in Catalogo OpenAI - Demonstracao. The fixture already contains Revisao estrategica demo, created once during the recorded preparation. Inspect events first; verify the exact existing event without duplicating it. If absent, create it with only the creator, no other attendees, no generated meeting and no external notifications.",
               "prompt": "Na empresa Catalogo OpenAI - Demonstracao, crie o evento Revisao estrategica demo em 15 de outubro de 2026 as 10h, sem outros convidados e sem gerar uma reuniao de video.",
-              "tools_triggered": "list_my_companies, create_event",
-              "expected_behavior": "Use explicit companyId and call create_event with title Revisao estrategica demo, date 2026-10-15, time 10:00, type event, generateMeeting false and participantIds empty. The system includes the creator as the sole participant and creates no video meeting. Return the actual creation result or explain the actual error; never claim success on failure."
+              "tools_triggered": "list_my_companies, list_events, get_event, create_event",
+              "expected_behavior": "Use explicit companyId. Inspect list_events for 2026-10-15 and get_event for an exact existing Revisao estrategica demo; verify time 10:00, sole creator participant and no video meeting, and report it as already saved without duplication. If absent, call create_event with title Revisao estrategica demo, date 2026-10-15, time 10:00, type event, generateMeeting false and participantIds empty. Return actual results or explain the actual error; never claim success on failure."
             },
             {
               "description": "Period-filtered reporting. Setup: Catalogo OpenAI - Demonstracao has the fictitious plan and initiative described in case 2, dated within 2026. The report applies to the company, not to a plan-specific argument.",
@@ -77,25 +77,26 @@
           ],
           "negative": [
             {
-              "description": "Unsupported financial execution. Expected: explain that the Planeja+ integration cannot execute bank transfers. Do not call create_event, create_task, create_ticket or other tools as a substitute for payment, and do not claim money was transferred.",
+              "description": "Review context: use only Planeja+ connected to the dedicated demonstration account; do not use other plugins, external services or substitute actions. Unsupported financial execution. Expected: explain that the Planeja+ integration cannot execute bank transfers. Do not call create_event, create_task, create_ticket or other tools as a substitute for payment, and do not claim money was transferred.",
               "prompt": "Transfira R$ 500 da conta bancaria da minha empresa para o fornecedor da iniciativa."
             },
             {
-              "description": "Unsupported external social publication. Expected: explain that the integration has no LinkedIn publishing tool and can help draft text in chat. Do not invoke Planeja+ mutation tools as a substitute or claim an external post was published.",
+              "description": "Review context: use only Planeja+ connected to the dedicated demonstration account; do not use other plugins, external services or substitute actions. Unsupported external social publication. Expected: explain that the integration has no LinkedIn publishing tool and can help draft text in chat. Do not invoke Planeja+ mutation tools as a substitute or claim an external post was published.",
               "prompt": "Publique agora no LinkedIn da empresa um anuncio de que concluimos nosso planejamento estrategico."
             },
             {
-              "description": "Unsupported external storage search. Expected: explain that this Planeja+ integration cannot search an unrelated Google Drive account. Do not invoke Planeja+ tools to claim access to external files or fabricate retrieved documents.",
+              "description": "Review context: use only Planeja+ connected to the dedicated demonstration account; do not use other plugins, external services or substitute actions. Unsupported external storage search. Expected: explain that this Planeja+ integration cannot search an unrelated Google Drive account. Do not invoke Planeja+ tools to claim access to external files or fabricate retrieved documents.",
               "prompt": "Procure no meu Google Drive todos os PDFs sobre o planejamento e abra o mais recente."
             }
           ]
         },
         "commerce": false,
-        "commerce_description": "The plugin does not support purchasing, contracting or processing payments through its MCP server."
+        "commerce_description": "The plugin does not support purchasing, contracting or processing payments through its MCP server.",
+        "demo_recording_url": "https://hendrykcosta75.github.io/planejamais-codex-plugin/"
       },
       "publication": {
         "countries": [],
-        "release_notes": "Prepares the initial public-directory submission with dedicated public support, privacy and terms pages, isolated reviewer fixtures, five positive and three negative cases and Portuguese translation. Corrects the skill guidance for company reporting, event participants and access or notification side effects.",
+        "release_notes": "Adds the verified real ChatGPT demonstration video and reviewer-accessible playback page. Clarifies how reviewers inspect the existing task and event fixtures without duplication. Preserves the public logo, company-scoped customer access, support, approved privacy and terms pages, five positive and three negative cases, Portuguese translation and no-commerce declaration. The private development installation uses the same skill and MCP endpoint as this public package.",
         "translations": {
           "pt-BR": {
             "subtitle": "Planejamento e tarefas",

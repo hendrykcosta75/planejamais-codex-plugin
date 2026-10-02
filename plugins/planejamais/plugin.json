@@ -1,13 +1,14 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "planejamais",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Conecta ChatGPT e Codex ao Planeja+ para consultar e atualizar planejamento estratégico, quadros de tarefas, reuniões, relatórios e tickets da sua empresa.",
   "author": {
-    "name": "Planeja+",
-    "url": "https://planejamais.com.br"
+    "name": "HENDRYK DE OLIVEIRA COSTA",
+    "url": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais",
+    "email": "consultoria.planejare@gmail.com"
   },
-  "homepage": "https://planejamais.com.br",
+  "homepage": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais",
   "repository": "https://github.com/hendrykcosta75/planejamais-codex-plugin",
   "keywords": [
     "planejamento",
@@ -20,23 +21,87 @@
     "com.openai": {
       "interface": {
         "displayName": "Planeja+",
-        "shortDescription": "Planejamento estratégico no seu agente",
-        "longDescription": "Consulte e atualize o Planeja+ direto no ChatGPT e no Codex: planejamentos, perspectivas, objetivos, iniciativas e etapas; quadros de tarefas, checklists e etiquetas; reuniões, eventos, relatórios e tickets. Cada chamada respeita o seu papel na empresa escolhida e ações destrutivas pedem confirmação.",
-        "developerName": "Planeja+",
+        "shortDescription": "Strategic planning and tasks",
+        "longDescription": "Connect ChatGPT and Codex to Planeja+ to review strategic plans, perspectives, objectives, initiatives and execution steps; manage Kanban boards, tasks and checklists; create calendar events; and read reports and support tickets. An existing Planeja+ account is required. Each call uses the selected company and the permissions of your role. Confirm destructive actions before execution.",
+        "developerName": "HENDRYK DE OLIVEIRA COSTA",
         "category": "Productivity",
         "capabilities": [
           "Read",
           "Write"
         ],
-        "websiteURL": "https://planejamais.com.br",
-        "privacyPolicyURL": "https://planejamais.com.br/privacidade",
+        "websiteURL": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais",
+        "privacyPolicyURL": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/privacidade",
         "defaultPrompt": [
           "Resuma o andamento das iniciativas do planejamento estratégico deste trimestre.",
           "Crie as tarefas de acompanhamento da reunião de hoje no quadro do time.",
           "Gere o relatório geral do planejamento e destaque os riscos."
         ],
         "logo": "./assets/logo.png",
-        "composerIcon": "./assets/logo.png"
+        "composerIcon": "./assets/logo.png",
+        "supportURL": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/suporte",
+        "termsOfServiceURL": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/termos"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Company discovery. Setup: the dedicated reviewer account is the active owner only of the fictitious company Catalogo OpenAI - Demonstracao. It has no global administrator role or access to real customer companies.",
+              "prompt": "Quais empresas do Planeja+ posso acessar e qual e o meu papel em cada uma?",
+              "tools_triggered": "list_my_companies",
+              "expected_behavior": "Call list_my_companies. Return company names and roles supported by the response, including Catalogo OpenAI - Demonstracao. Use its returned id as companyId in subsequent cases. Do not invent or disclose inaccessible companies."
+            },
+            {
+              "description": "Strategic plan drill-down. Setup: company Catalogo OpenAI - Demonstracao contains the plan Planejamento Demo 2026, its four default perspectives, and a sample objective and initiative. Supply the company context from case 1.",
+              "prompt": "Na empresa Catalogo OpenAI - Demonstracao, mostre as perspectivas, objetivos e iniciativas do Planejamento Demo 2026.",
+              "tools_triggered": "list_my_companies, list_planejamentos, get_planejamento",
+              "expected_behavior": "Resolve the named company and plan through discovery results. Call get_planejamento with the returned plan id and explicit companyId. Summarize perspectives, objectives and initiatives from the result; do not invent owners, dates or progress. No write tools are needed."
+            },
+            {
+              "description": "Kanban task creation. Setup: the reviewer is an owner only in Catalogo OpenAI - Demonstracao and a member of the board Acompanhamento Demo. The task Revisar meta do trimestre is absent before the case. Run this case once or inspect existing tasks before rerunning.",
+              "prompt": "Na empresa Catalogo OpenAI - Demonstracao, crie a tarefa Revisar meta do trimestre com prioridade alta na coluna A fazer do quadro Acompanhamento Demo.",
+              "tools_triggered": "list_my_companies, list_boards, get_board, create_task, list_tasks",
+              "expected_behavior": "Resolve boardId and columnId from list_boards/get_board and use the discovered companyId. Call create_task with title Revisar meta do trimestre and priority alta, without assigning real users or adding unknown labels. Verify the returned task appears in list_tasks for that board and column. Report success only if creation succeeds."
+            },
+            {
+              "description": "Calendar event creation. Setup: owner role only in Catalogo OpenAI - Demonstracao. The creator is automatically included as the only participant. No other attendees, generated meeting, or external notifications are requested. The test event is absent before execution; inspect existing events before rerunning.",
+              "prompt": "Na empresa Catalogo OpenAI - Demonstracao, crie o evento Revisao estrategica demo em 15 de outubro de 2026 as 10h, sem outros convidados e sem gerar uma reuniao de video.",
+              "tools_triggered": "list_my_companies, create_event",
+              "expected_behavior": "Use explicit companyId and call create_event with title Revisao estrategica demo, date 2026-10-15, time 10:00, type event, generateMeeting false and participantIds empty. The system includes the creator as the sole participant and creates no video meeting. Return the actual creation result or explain the actual error; never claim success on failure."
+            },
+            {
+              "description": "Period-filtered reporting. Setup: Catalogo OpenAI - Demonstracao has the fictitious plan and initiative described in case 2, dated within 2026. The report applies to the company, not to a plan-specific argument.",
+              "prompt": "Gere o relatorio geral da empresa Catalogo OpenAI - Demonstracao para o periodo de 1 de janeiro a 31 de dezembro de 2026.",
+              "tools_triggered": "list_my_companies, get_relatorio_geral",
+              "expected_behavior": "Call get_relatorio_geral with explicit companyId and dateRange containing startDate 2026-01-01 and endDate 2026-12-31. Summarize returned totals and per-plan progress, preserving returned statuses. Do not invent totals, savings or risks unsupported by the result. No write tools are needed."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported financial execution. Expected: explain that the Planeja+ integration cannot execute bank transfers. Do not call create_event, create_task, create_ticket or other tools as a substitute for payment, and do not claim money was transferred.",
+              "prompt": "Transfira R$ 500 da conta bancaria da minha empresa para o fornecedor da iniciativa."
+            },
+            {
+              "description": "Unsupported external social publication. Expected: explain that the integration has no LinkedIn publishing tool and can help draft text in chat. Do not invoke Planeja+ mutation tools as a substitute or claim an external post was published.",
+              "prompt": "Publique agora no LinkedIn da empresa um anuncio de que concluimos nosso planejamento estrategico."
+            },
+            {
+              "description": "Unsupported external storage search. Expected: explain that this Planeja+ integration cannot search an unrelated Google Drive account. Do not invoke Planeja+ tools to claim access to external files or fabricate retrieved documents.",
+              "prompt": "Procure no meu Google Drive todos os PDFs sobre o planejamento e abra o mais recente."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not support purchasing, contracting or processing payments through its MCP server."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Prepares the initial public-directory submission with dedicated public support, privacy and terms pages, isolated reviewer fixtures, five positive and three negative cases and Portuguese translation. Corrects the skill guidance for company reporting, event participants and access or notification side effects.",
+        "translations": {
+          "pt-BR": {
+            "subtitle": "Planejamento e tarefas",
+            "description": "Conecte ChatGPT e Codex ao Planeja+ para consultar planejamentos, perspectivas, objetivos, iniciativas e etapas; gerenciar quadros Kanban, tarefas e checklists; criar eventos; e consultar relatórios e tickets. É necessário ter uma conta no Planeja+. Cada chamada usa a empresa escolhida e as permissões do seu papel. Ações destrutivas exigem confirmação antes da execução."
+          }
+        }
       }
     }
   }

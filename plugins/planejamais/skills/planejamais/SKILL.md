@@ -34,13 +34,28 @@ backend mesmo que a ferramenta apareça na lista.
   `move_task`/`update_task` → `add_checklist_item` para próximos passos.
 - Reunião: `create_meeting` para agendar e `list_meetings` para acompanhar;
   use `create_event` para compromissos simples da agenda.
-- Relatórios: `get_relatorio_geral` com o planejamento escolhido e
-  `get_relatorio_por_perspectiva`/`get_relatorio_por_usuario` para recortes.
+- Relatórios: `get_relatorio_geral` resume a empresa escolhida; passe `companyId`
+  e, se necessário, `dateRange` com `startDate` e `endDate`. Para recorte de um
+  planejamento, use `get_relatorio_por_perspectiva` com `planejamentoId`;
+  `get_relatorio_por_usuario` aceita `targetUserId` para recortes por usuário.
 - Suporte: `list_my_tickets` e `create_ticket` para registrar pedidos.
+
+## Efeitos das ações
+
+- `create_event` sempre inclui o usuário que cria o evento como participante.
+  Uma lista `participantIds` vazia significa sem outros convidados.
+- Comentários de iniciativas e tarefas, itens de checklist e alterações de
+  descrições de tarefas/iniciativas podem enviar notificações e emails aos
+  membros mencionados no texto. Confirme os destinatários e o texto antes de
+  executar uma ação que enviará essas mensagens.
+- Convites por email, remoção de membros, troca de papel, inativação e
+  substituição dos membros de um planejamento afetam acesso ou enviam mensagens.
+  Verifique o alvo e o efeito solicitados antes de executar.
 
 ## Autenticação
 
-O Claude conduz o OAuth sozinho na primeira chamada e abre o navegador para o
-usuário autorizar. Se o servidor aparecer desconectado, peça ao usuário para
-rodar `/mcp` e autenticar `planejamais`. O token não expira e pode ser removido
-na página MCP do Planeja+.
+O cliente compatível conduz o OAuth na primeira chamada e abre o navegador para o
+usuário autorizar. Se o servidor aparecer desconectado, oriente o usuário a reconectar o Planeja+
+pelo gerenciamento de plugins/conexões do cliente e concluir a autorização OAuth. As autorizações podem ser revogadas
+na página MCP do Planeja+. Se o cliente não conseguir renovar a sessão,
+conclua a reconexão pelo gerenciamento de plugins/conexões.

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "planejamais",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Conecta ChatGPT e Codex ao Planeja+ para consultar e atualizar planejamento estratégico, quadros de tarefas, reuniões, relatórios e tickets da sua empresa.",
   "author": {
     "name": "HENDRYK DE OLIVEIRA COSTA",
@@ -30,7 +30,7 @@
           "Write"
         ],
         "websiteURL": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais",
-        "privacyPolicyURL": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/privacidade",
+        "privacyPolicyURL": "https://raw.githubusercontent.com/hendrykcosta75/planejamais-codex-plugin/main/docs/privacidade.md",
         "defaultPrompt": [
           "Resuma o andamento das iniciativas do planejamento estratégico deste trimestre.",
           "Crie as tarefas de acompanhamento da reunião de hoje no quadro do time.",

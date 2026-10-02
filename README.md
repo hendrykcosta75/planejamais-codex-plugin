@@ -38,6 +38,11 @@ As autorizações podem ser revogadas na
 - [Privacidade](https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/privacidade)
 - [Termos de uso](https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/termos)
 
+O mesmo texto da política está disponível em [docs/privacidade.md](docs/privacidade.md).
+O pacote 1.0.5 aponta para esse espelho público como URL de privacidade,
+permitindo a consulta automatizada sem autenticação. A página oficial acima
+continua disponível no site.
+
 ## Instalação para teste
 
 Com o Codex CLI:

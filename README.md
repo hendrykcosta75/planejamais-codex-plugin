@@ -39,9 +39,8 @@ As autorizações podem ser revogadas na
 - [Termos de uso](https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/termos)
 
 O mesmo texto da política está disponível em [docs/privacidade.md](docs/privacidade.md).
-O pacote 1.0.6 aponta para esse espelho público como URL de privacidade,
-permitindo a consulta automatizada sem autenticação. A página oficial acima
-continua disponível no site.
+A partir do pacote 1.0.7, a URL de privacidade do manifesto é a página
+oficial acima, pública e acessível sem autenticação.
 
 ## Demonstração para revisão
 

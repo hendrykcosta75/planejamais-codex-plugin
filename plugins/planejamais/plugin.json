@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "planejamais",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Conecta ChatGPT e Codex ao Planeja+ para consultar e atualizar planejamento estratégico, quadros de tarefas, reuniões, relatórios e tickets da sua empresa.",
   "author": {
     "name": "HENDRYK DE OLIVEIRA COSTA",
@@ -98,7 +98,7 @@
         "countries": [
           "BR"
         ],
-        "release_notes": "Points the privacy policy to the official Planeja+ integration page instead of a raw GitHub file. Sets Brazil as the publication country. No changes to tools, test cases, MCP endpoint or the no-commerce declaration.",
+        "release_notes": "Connects with the toolsets query parameter so the catalog stays within the Codex plugin tool budget (Editais e Projetos is left out of this package). No changes to test cases, privacy policy or the no-commerce declaration.",
         "translations": {
           "pt-BR": {
             "subtitle": "Planejamento e tarefas",

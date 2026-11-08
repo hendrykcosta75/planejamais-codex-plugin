@@ -19,7 +19,7 @@ empresas permitidas para essa conta e respeita suas permissões.
 
 ## O que o plugin instala
 
-- Servidor MCP remoto `planejamais` (`https://planejamais.planejareconsultoria.com.br/api/mcp`) em
+- Servidor MCP remoto `planejamais` (`https://planejamais.planejareconsultoria.com.br/api/mcp?toolsets=…`) em
   `mcp.json`, com OAuth 2.1 (Dynamic Client Registration + PKCE) conduzido pelo
   cliente.
 - Skill `planejamais` com os fluxos de uso, o cuidado com `companyId` e as
@@ -72,7 +72,9 @@ guia do produto.
 
 ## Manutenção
 
-- A URL de produção é `https://planejamais.planejareconsultoria.com.br/api/mcp`.
+- A URL de produção é `https://planejamais.planejareconsultoria.com.br/api/mcp`. O pacote usa
+  `?toolsets=` com todos os grupos exceto `editais_projetos`, para o catálogo caber no limite de
+  64.000 bytes de tools por plugin do Codex. Ao criar grupos novos no servidor, avalie se entram aqui.
   Se o app mudar de domínio, atualize `plugins/planejamais/mcp.json` e suba a versão.
 - Ao publicar uma nova versão, incremente `version` em
   `plugins/planejamais/plugin.json`.

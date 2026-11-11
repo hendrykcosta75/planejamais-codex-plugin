@@ -106,6 +106,13 @@
           }
         }
       }
+    },
+    "com.nousresearch.hermes": {
+      "servers": {
+        "planejamais": {
+          "trust": "untrusted"
+        }
+      }
     }
   }
 }

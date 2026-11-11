@@ -31,6 +31,69 @@ O cliente conduz a autorização OAuth pelo navegador, sem token manual.
 As autorizações podem ser revogadas na
 [página MCP do Planeja+](https://planejamais.planejareconsultoria.com.br/mcp).
 
+## Hermes Agent
+
+The same package installs in [Hermes Agent](https://hermes-agent.nousresearch.com)
+as a portable Agent Plugins v1 package (`mcp.json` + `skills/`, no Python and no
+executables). A Planeja+ account is required.
+
+From the Hermes plugin catalog:
+
+```bash
+hermes plugins install planejamais
+hermes plugins enable planejamais
+```
+
+Or directly from this repository:
+
+```bash
+hermes plugins install hendrykcosta75/planejamais-codex-plugin/plugins/planejamais --no-enable
+hermes plugins enable planejamais
+```
+
+Then sign in once. Hermes runs OAuth only for MCP servers you add yourself, so
+add the server under the same name:
+
+```bash
+hermes mcp add planejamais --url "https://planejamais.planejareconsultoria.com.br/api/mcp?toolsets=planejamentos,meu_espaco,agenda,meetings,notifications,tickets,users,dados_publicos" --auth oauth --connect-timeout 300
+```
+
+Your browser opens the Planeja+ sign-in page (OAuth 2.1 with Dynamic Client
+Registration and PKCE, public client, loopback callback). Approve access; the
+tools load in your next session (or after `/reload-mcp`). To sign in again, run
+`hermes mcp login planejamais`. Keep the name `planejamais`: your entry then
+takes the place of the plugin's server entry, and the plugin keeps providing
+the `planejamais` skill. Revoke access at any time on the
+[Planeja+ MCP page](https://planejamais.planejareconsultoria.com.br/mcp).
+
+### Before you install
+
+- **Write and delete access.** Besides read tools (`list_*`, `get_*`, reports),
+  the server exposes tools that create, update and delete plans, objectives,
+  initiatives, steps, boards, tasks, checklists, events and tickets, end
+  meetings, and remove company users or change their roles and status. Every call is limited
+  to the companies and role of the signed-in account; the backend refuses what
+  the role does not allow. The bundled skill tells the agent to confirm each
+  destructive action first.
+- **E-mail and notifications.** `invite_company_user` (owners only) e-mails an
+  invitation to the address given, and comments with mentions notify the
+  mentioned members.
+- **Trust.** The plugin marks its server `untrusted`, so Hermes asks before
+  every non-read-only call and declines it in cron and unattended runs. The
+  documented OAuth setup (`hermes mcp add planejamais`) replaces that entry with
+  a native one at Hermes's default trust unless you set
+  `mcp_servers.planejamais.trust: untrusted`.
+- **Network and data.** Tool calls go only to
+  `planejamais.planejareconsultoria.com.br`; the company data you request is
+  returned to your model provider as tool output. See the
+  [privacy policy](https://planejamais.planejareconsultoria.com.br/integracoes/planejamais/privacidade).
+- **Remote tool set.** Tools are served by the remote MCP server at runtime and
+  are not covered by the pinned commit.
+- **Shared sign-in.** Chats that share a Hermes profile share the same Planeja+
+  sign-in.
+- **No telemetry, no payments.** The package collects no telemetry and cannot
+  purchase, contract or process payments.
+
 ## Links oficiais
 
 - [Integração Planeja+](https://planejamais.planejareconsultoria.com.br/integracoes/planejamais)

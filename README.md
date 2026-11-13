@@ -94,6 +94,27 @@ the `planejamais` skill. Revoke access at any time on the
 - **No telemetry, no payments.** The package collects no telemetry and cannot
   purchase, contract or process payments.
 
+## Cursor
+
+The same folder is also a Cursor plugin: `.cursor-plugin/marketplace.json` at the
+repository root points to `plugins/planejamais`, whose manifest is
+`plugins/planejamais/.cursor-plugin/plugin.json`. A Planeja+ account is required.
+
+- **MCP server.** `mcp.cursor.json` declares the remote server `planejamais` over
+  HTTP. Cursor signs in with OAuth 2.1 (Dynamic Client Registration + PKCE) in the
+  browser; no API key or token is stored in the plugin.
+- **Tools.** The URL selects every toolset except Editais e Projetos, the same
+  catalog as the Codex package. Write and delete tools are limited to the
+  companies and role of the signed-in account, and the bundled skill asks the
+  agent to confirm destructive actions.
+- **Skill.** `skills/planejamais/SKILL.md` describes the workflows and the
+  `companyId` rule.
+- **Local test.** Copy `plugins/planejamais` to
+  `~/.cursor/plugins/local/planejamais` and reload the Cursor window.
+
+The plugin is MIT licensed (see `LICENSE`). Authorizations can be revoked on the
+[Planeja+ MCP page](https://planejamais.planejareconsultoria.com.br/mcp).
+
 ## Links oficiais
 
 - [Integração Planeja+](https://planejamais.planejareconsultoria.com.br/integracoes/planejamais)

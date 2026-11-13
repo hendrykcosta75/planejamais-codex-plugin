@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.hendrykcosta75/planejamais",
+  "title": "Planeja+",
+  "description": "Strategic planning, Kanban tasks, meetings, reports and funding calls from Planeja+ (OAuth).",
+  "version": "1.0.8",
+  "websiteUrl": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais",
+  "repository": {
+    "url": "https://github.com/hendrykcosta75/planejamais-codex-plugin",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://planejamais.planejareconsultoria.com.br/logo-landing-cropped.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://planejamais.planejareconsultoria.com.br/api/mcp"
+    }
+  ]
+}

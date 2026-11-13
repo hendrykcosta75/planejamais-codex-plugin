@@ -1,0 +1,31 @@
+{
+  "name": "planejamais",
+  "displayName": "Planeja+",
+  "version": "1.0.8",
+  "description": "Review and update Planeja+ strategic plans, Kanban boards, tasks, checklists, events, meetings, reports and support tickets through the official MCP server. Sign in with OAuth; your role in each company limits what the agent can do.",
+  "author": {
+    "name": "Planejare Consultoria",
+    "email": "consultoria.planejare@gmail.com"
+  },
+  "homepage": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais",
+  "repository": "https://github.com/hendrykcosta75/planejamais-codex-plugin",
+  "license": "MIT",
+  "keywords": [
+    "planning",
+    "strategic-planning",
+    "kanban",
+    "tasks",
+    "okr",
+    "mcp"
+  ],
+  "logo": "assets/logo.png",
+  "category": "productivity",
+  "tags": [
+    "planning",
+    "kanban",
+    "tasks",
+    "mcp",
+    "oauth"
+  ],
+  "mcpServers": "./mcp.cursor.json"
+}

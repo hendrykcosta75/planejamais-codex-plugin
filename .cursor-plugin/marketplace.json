@@ -1,0 +1,18 @@
+{
+  "name": "planejamais",
+  "owner": {
+    "name": "Planejare Consultoria",
+    "email": "consultoria.planejare@gmail.com"
+  },
+  "metadata": {
+    "description": "Official Planeja+ plugin for Cursor",
+    "version": "1.0.8"
+  },
+  "plugins": [
+    {
+      "name": "planejamais",
+      "source": "./plugins/planejamais",
+      "description": "Strategic planning, Kanban tasks, meetings and reports from Planeja+ through its official MCP server."
+    }
+  ]
+}

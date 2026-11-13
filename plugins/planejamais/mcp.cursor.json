@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "planejamais": {
+      "type": "http",
+      "url": "https://planejamais.planejareconsultoria.com.br/api/mcp?toolsets=planejamentos,meu_espaco,agenda,meetings,notifications,tickets,users,dados_publicos"
+    }
+  }
+}

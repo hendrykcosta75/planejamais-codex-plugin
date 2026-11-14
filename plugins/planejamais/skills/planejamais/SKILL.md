@@ -1,6 +1,6 @@
 ---
 name: planejamais
-description: Consulta e atualiza o Planeja+ (planejamento estratégico, perspectivas, objetivos, iniciativas, etapas, quadros de tarefas, checklists, reuniões, eventos, relatórios e tickets) via MCP. Use quando o usuário pedir para ver o planejamento da empresa, acompanhar iniciativas ou tarefas, criar ou mover tarefas, agendar eventos ou reuniões, gerar relatórios ou abrir tickets.
+description: Consulta e atualiza o Planeja+ (planejamento estratégico, perspectivas, objetivos, iniciativas, etapas, quadros de tarefas, checklists, reuniões, eventos, relatórios, tickets e editais e projetos) via MCP. Use quando o usuário pedir para ver o planejamento da empresa, acompanhar iniciativas ou tarefas, criar ou mover tarefas, agendar eventos ou reuniões, gerar relatórios, abrir tickets ou trabalhar em editais e projetos.
 ---
 
 # Planeja+
@@ -39,6 +39,13 @@ backend mesmo que a ferramenta apareça na lista.
   planejamento, use `get_relatorio_por_perspectiva` com `planejamentoId`;
   `get_relatorio_por_usuario` aceita `targetUserId` para recortes por usuário.
 - Suporte: `list_my_tickets` e `create_ticket` para registrar pedidos.
+- Editais e Projetos (quando as ferramentas estiverem disponíveis no cliente):
+  `get_editais_projetos` para ver editais, candidaturas e o estado de cada uma;
+  `create_edital` ou `create_candidatura` para cadastrar; revisão da ficha e da
+  aderência (`approve_ficha`, `run_aderencia_analysis`); e o projeto com
+  `generate_projeto`, `review_projeto` e `export_projeto`. Aprovar ficha,
+  revisar análise e conferir projeto são atestações em nome do usuário:
+  confirme antes de executar.
 
 ## Efeitos das ações
 

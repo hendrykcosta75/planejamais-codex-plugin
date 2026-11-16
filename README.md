@@ -1,5 +1,7 @@
 # Plugin ChatGPT/Codex — Planeja+
 
+[![mcptry](https://mcptry.com/badge/io.github.hendrykcosta75/planejamais)](https://mcptry.com/servers/io.github.hendrykcosta75/planejamais)
+
 Pacote Agent Plugins do conector MCP do **Planeja+** para ChatGPT e Codex.
 A disponibilização no catálogo público ainda aguarda aprovação e publicação
 pela OpenAI. Este repositório é apenas o pacote de distribuição; o produto

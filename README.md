@@ -3,13 +3,10 @@
 [![mcptry](https://mcptry.com/badge/io.github.hendrykcosta75/planejamais)](https://mcptry.com/servers/io.github.hendrykcosta75/planejamais)
 
 Pacote Agent Plugins do conector MCP do **Planeja+** para ChatGPT e Codex.
-A disponibilização no catálogo público ainda aguarda aprovação e publicação
-pela OpenAI. Este repositório é apenas o pacote de distribuição; o produto
+O plugin está publicado no catálogo da OpenAI (ChatGPT e Codex). Este repositório é apenas o pacote de distribuição; o produto
 Planeja+ é mantido em outro repositório.
 
 ## Conectar sua própria conta
-
-Após aprovação e publicação no catálogo da OpenAI:
 
 1. Abra Plugins no ChatGPT ou Codex e procure **Planeja+**.
 2. Instale o plugin e selecione **Conectar**.
@@ -132,7 +129,7 @@ oficial acima, pública e acessível sem autenticação.
 
 [Assista à gravação real no ChatGPT](https://hendrykcosta75.github.io/planejamais-codex-plugin/).
 Ela usa uma empresa fictícia dedicada aos revisores. Os clientes conectam
-suas próprias contas quando o plugin estiver publicado no catálogo.
+suas próprias contas pelo catálogo, como descrito acima.
 
 ## Instalação para teste
 
@@ -155,6 +152,13 @@ universal do servidor. Requisitos e materiais (identidade verificada, prompts,
 casos de teste, verificação de domínio em
 `/.well-known/openai-apps-challenge`, annotations por tool) estão detalhados no
 guia do produto.
+
+Tools novas ou alteradas no servidor entram no ar pelo **Rescan** da aba MCPs
+do portal, depois do deploy. Mudanças de descrição, notas ou skill exigem nova
+versão em **Create draft from ZIP**: o ZIP leva `plugin.json`, `assets/`,
+`skills/` e um `mcp.json` com um único servidor apontando para `/api/mcp` sem
+`?toolsets=` (o `mcp.json` deste repositório é o do Codex e deixaria Editais e
+Projetos de fora).
 
 ## Manutenção
 

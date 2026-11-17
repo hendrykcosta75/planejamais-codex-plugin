@@ -22,6 +22,12 @@ backend mesmo que a ferramenta apareça na lista.
    `remove_*`, `end_meeting`, `set_company_user_status` etc.), confirme com o
    usuário o que será removido e o efeito esperado. Nunca encadeie várias ações
    destrutivas sem confirmação explícita.
+   O servidor também exige a confirmação: em exclusões permanentes, reescritas
+   do projeto por IA e menções que enviam e-mail, a primeira chamada não executa
+   nada e devolve `confirmationRequired` com um token `confirmacao`. Mostre ao
+   usuário o que será feito e, só depois do sim dele, repita a mesma chamada com
+   os mesmos argumentos e `confirmacao` igual ao token (vale 10 minutos e uma
+   única execução). Se ele recusar, não repita a chamada.
 4. Datas e valores seguem o formato aceito pela ferramenta; confirme o `id`
    correto antes de criar, mover ou atualizar itens (use as listagens para
    obtê-lo).

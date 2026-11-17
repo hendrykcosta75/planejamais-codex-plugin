@@ -37,7 +37,7 @@ Ferramentas de convite e notificações podem enviar e-mails aos destinatários 
 
 A OpenAI e os demais clientes aplicam suas próprias políticas ao conteúdo recebido. O processamento por esses serviços pode ocorrer fora do Brasil. Remover a conexão no Planeja+ não remove as cópias já recebidas por eles; consulte as opções de privacidade e eliminação do cliente utilizado.
 
-As ferramentas MCP executam consultas e alterações no Planeja+; não acionam o modelo Gemini do assistente interno nem transmitem áudio ou vídeo das reuniões. O uso do assistente interno ou a entrada numa sala de vídeo pela interface são funcionalidades distintas desta conexão MCP.
+A maioria das ferramentas MCP só consulta ou altera registros no Planeja+, sem usar IA do serviço, e nenhuma transmite áudio ou vídeo das reuniões. As ferramentas de Editais e Projetos que usam IA (completar alertas da Ficha, nova análise de Aderência, gerar, preencher ou atualizar o projeto) enviam o texto do edital, os dados da candidatura e do proponente e os campos do projeto ao provedor de IA configurado no Planeja+. Hoje esse provedor é a DeepSeek, que processa os dados fora do Brasil (na China) e conserva o conteúdo conforme a própria política de privacidade; a administração do serviço pode configurar como alternativas Google Gemini, OpenAI ou Xiaomi MiMo. Os dossiês de Dados Públicos usam a OpenAI para indexar as fontes. O provedor recebe apenas o necessário para cada pedido.
 
 ## 5. Conservação, remoção e desconexão
 

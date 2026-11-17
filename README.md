@@ -1,10 +1,34 @@
-# Plugin ChatGPT/Codex — Planeja+
+<div align="center">
+  <img src="plugins/planejamais/assets/logo.png" alt="Planeja+" width="88" />
 
-[![mcptry](https://mcptry.com/badge/io.github.hendrykcosta75/planejamais)](https://mcptry.com/servers/io.github.hendrykcosta75/planejamais)
+  <h1>Planeja+ para ChatGPT, Codex, Hermes e Cursor</h1>
 
-Pacote Agent Plugins do conector MCP do **Planeja+** para ChatGPT e Codex.
-O plugin está publicado no catálogo da OpenAI (ChatGPT e Codex). Este repositório é apenas o pacote de distribuição; o produto
-Planeja+ é mantido em outro repositório.
+  <p>Plugin oficial do conector MCP do <a href="https://planejamais.planejareconsultoria.com.br">Planeja+</a>: planejamento estratégico, tarefas Kanban, reuniões, relatórios e tickets direto no seu assistente.</p>
+
+  <p>
+    <a href="https://github.com/hendrykcosta75/planejamais-codex-plugin/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/hendrykcosta75/planejamais-codex-plugin?color=5A45FF" /></a>
+    <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue" /></a>
+    <a href="https://registry.modelcontextprotocol.io/v0/servers?search=io.github.hendrykcosta75/planejamais"><img alt="MCP Registry" src="https://img.shields.io/badge/MCP%20Registry-io.github.hendrykcosta75%2Fplanejamais-5A45FF" /></a>
+    <a href="https://mcptry.com/servers/io.github.hendrykcosta75/planejamais"><img alt="mcptry" src="https://mcptry.com/badge/io.github.hendrykcosta75/planejamais" /></a>
+  </p>
+  <p>
+    <img alt="ChatGPT e Codex" src="https://img.shields.io/badge/ChatGPT%20e%20Codex-publicado-10A37F?logo=openai&logoColor=white" />
+    <a href="https://claude.ai/directory/connectors/planejamais"><img alt="Claude" src="https://img.shields.io/badge/Claude-conector%20publicado-D97757?logo=claude&logoColor=white" /></a>
+    <img alt="Hermes" src="https://img.shields.io/badge/Hermes%20Agent-cat%C3%A1logo-111111" />
+    <img alt="OAuth 2.1" src="https://img.shields.io/badge/OAuth%202.1-DCR%20%2B%20PKCE-2F855A" />
+  </p>
+</div>
+
+O plugin está publicado no catálogo da OpenAI (ChatGPT e Codex). Este repositório é só o pacote de
+distribuição; o produto Planeja+ é mantido em outro repositório.
+
+| Cliente | Como instalar |
+|---|---|
+| ChatGPT e Codex | Plugins → procure **Planeja+** → Conectar |
+| Codex CLI | `codex plugin marketplace add hendrykcosta75/planejamais-codex-plugin` |
+| Hermes Agent | `hermes plugins install planejamais` ([detalhes](#hermes-agent)) |
+| Cursor | Marketplace do Cursor, ou instalação local ([detalhes](#cursor)) |
+| Claude | Use o [conector do Claude](https://claude.ai/directory/connectors/planejamais) ou o [plugin do Claude Code](https://github.com/hendrykcosta75/planejamais-claude-plugin) |
 
 ## Conectar sua própria conta
 
@@ -72,8 +96,10 @@ the `planejamais` skill. Revoke access at any time on the
   initiatives, steps, boards, tasks, checklists, events and tickets, end
   meetings, and remove company users or change their roles and status. Every call is limited
   to the companies and role of the signed-in account; the backend refuses what
-  the role does not allow. The bundled skill tells the agent to confirm each
-  destructive action first.
+  the role does not allow. Permanent deletions, AI rewrites of project content
+  and mentions that e-mail members are also gated by the server: the first call
+  returns a `confirmacao` token and runs nothing, and only the same call
+  repeated with that token runs, once. The bundled skill explains this flow.
 - **E-mail and notifications.** `invite_company_user` (owners only) e-mails an
   invitation to the address given, and comments with mentions notify the
   mentioned members.

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "planejamais",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Conecta ChatGPT e Codex ao Planeja+ para consultar e atualizar planejamento estratégico, quadros de tarefas, reuniões, relatórios, tickets e editais e projetos da sua empresa.",
   "author": {
     "name": "HENDRYK DE OLIVEIRA COSTA",
@@ -98,7 +98,7 @@
         "countries": [
           "BR"
         ],
-        "release_notes": "Adds the Editais e Projetos tools (funding calls and project proposals): register a call or application, review the eligibility sheet and adherence analysis, and generate, fill, review and export the project. All tool titles and descriptions are now in English, with annotations checked against each action's real effect. The server now reports its title, version, website and icons in the initialize response. No changes to test cases, privacy policy or the no-commerce declaration.",
+        "release_notes": "The server now enforces a confirmation step: permanent deletions, AI rewrites of project content and mentions that email members return a confirmation token on the first call and run only when the same call is repeated with it, once. The bundled skill explains this flow. The privacy policy now names the AI provider used by the Editais e Projetos AI features (DeepSeek). No changes to test cases or the no-commerce declaration.",
         "translations": {
           "pt-BR": {
             "subtitle": "Planejamento e tarefas",

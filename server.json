@@ -3,7 +3,7 @@
   "name": "io.github.hendrykcosta75/planejamais",
   "title": "Planeja+",
   "description": "Strategic planning, Kanban tasks, meetings, reports and funding calls from Planeja+ (OAuth).",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "websiteUrl": "https://planejamais.planejareconsultoria.com.br/integracoes/planejamais",
   "repository": {
     "url": "https://github.com/hendrykcosta75/planejamais-codex-plugin",

@@ -10,6 +10,7 @@
     <a href="LICENSE"><img alt="MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue" /></a>
     <a href="https://registry.modelcontextprotocol.io/v0/servers?search=io.github.hendrykcosta75/planejamais"><img alt="MCP Registry" src="https://img.shields.io/badge/MCP%20Registry-io.github.hendrykcosta75%2Fplanejamais-5A45FF" /></a>
     <a href="https://mcptry.com/servers/io.github.hendrykcosta75/planejamais"><img alt="mcptry" src="https://mcptry.com/badge/io.github.hendrykcosta75/planejamais" /></a>
+    <a href="https://glama.ai/mcp/connectors/io.github.hendrykcosta75/planejamais"><img alt="Planeja+ MCP connector" src="https://glama.ai/mcp/connectors/io.github.hendrykcosta75/planejamais/badges/score.svg" /></a>
   </p>
   <p>
     <img alt="ChatGPT e Codex" src="https://img.shields.io/badge/ChatGPT%20e%20Codex-publicado-10A37F?logo=openai&logoColor=white" />
